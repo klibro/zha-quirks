@@ -47,9 +47,15 @@ class TemperatureHumidityManufCluster(TuyaMCUCluster):
             "measured_value",
             converter=lambda x: x * 10,  # decidegree to centidegree
         ),
+        402: DPToAttributeMapping(
+            TuyaTemperatureMeasurement.ep_attribute,
+            "measured_value",
+            converter=lambda x: x * 10,  # decidegree to centidegree
+        ),
     }
 
     data_point_handlers = {
+        402: "_dp_2_attr_update",
         102: "_dp_2_attr_update",
     }
 
